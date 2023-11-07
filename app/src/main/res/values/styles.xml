@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="aurora">
+        <item name="android:textSize">96sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="CustomButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_states</item>
+        <item name="colorButtonNormal">@color/black</item>
+    </style>
+</resources>
+
