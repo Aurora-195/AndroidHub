@@ -15,4 +15,8 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="aurora">Aurora</string>
+    <string name="phrase_1">Embark on a journey of balanced living</string>
+    <string name="phrase_2">Illuminate your life’s patterns</string>
+
+    <string name="forgot_password">Forgot password?</string>
 </resources>
