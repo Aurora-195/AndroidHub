@@ -8,7 +8,6 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -42,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
-        final Button loginButton = binding.login;
+        final View loginButton = binding.login;
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {

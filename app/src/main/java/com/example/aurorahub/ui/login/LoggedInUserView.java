@@ -15,3 +15,4 @@ class LoggedInUserView {
         return displayName;
     }
 }
+

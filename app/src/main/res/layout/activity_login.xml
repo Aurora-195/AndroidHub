@@ -60,16 +60,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--
-    Font family: Inter
-    Line height: 19sp
-    -->
 
-    <!-- styles.xml -->
-
-
-    <!-- strings.xml -->
-
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/action_sign_in"
+        android:textStyle="bold"
+        android:textAppearance="@style/under_text_phrase"
+        android:background="@drawable/login_button"
+        android:gravity="center_horizontal|center_vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
         android:id="@+id/embark_on_a"
@@ -92,45 +96,6 @@
         app:layout_constraintEnd_toEndOf="@+id/login"
         app:layout_constraintStart_toStartOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/login" />
-
-    <Button
-        android:id="@+id/login"
-        android:layout_width="247dp"
-        android:layout_height="47dp"
-        android:layout_gravity="start"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/button_states"
-
-
-
-        android:enabled="false"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
-        android:text="@string/action_sign_in"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <ProgressBar
-        android:id="@+id/loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="64dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
