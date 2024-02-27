@@ -11,4 +11,12 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
+    <style name="WhiteButton" parent="Widget.MaterialComponents.Button">
+        <!-- Set text color to gray -->
+        <item name="textAllCaps">false</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="borderRound">10dp</item>
+
+    </style>
+
 </resources>
