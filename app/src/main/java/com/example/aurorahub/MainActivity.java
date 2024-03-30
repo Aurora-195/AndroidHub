@@ -86,10 +86,10 @@ public class MainActivity extends AppCompatActivity {
         activity4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activity4.getImageTintList() == ColorStateList.valueOf(getResources().getColor(R.color.gray)))
+                if(activity4.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))
                     activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 else {
-                    activity4.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
                     activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                     activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                     activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!Arrays.asList(activity1.getImageTintList(), activity2.getImageTintList(), activity3.getImageTintList(), activity4.getImageTintList())
-                        .contains(ColorStateList.valueOf(getResources().getColor(R.color.gray)))) {
+                        .contains(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))) {
                     Snackbar.make(findViewById(R.id.start_btn), "Please select an activity", Snackbar.LENGTH_SHORT).show();
                 }
             }
