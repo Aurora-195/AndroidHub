@@ -1,6 +1,7 @@
 package com.example.aurorahub;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -43,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         activity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activity1.getImageTintList() == ColorStateList.valueOf(getResources().getColor(R.color.gray)))
-                    activity1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                if(activity1.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))
+                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 else {
-                    activity1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
-                    activity2.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity3.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity4.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
+                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 }
             }
         });
@@ -57,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
         activity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activity2.getImageTintList() == ColorStateList.valueOf(getResources().getColor(R.color.gray)))
-                    activity2.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                if(activity2.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))
+                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 else {
-                    activity2.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
-                    activity1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity3.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity4.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
+                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 }
             }
         });
@@ -71,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
         activity3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(activity3.getImageTintList() == ColorStateList.valueOf(getResources().getColor(R.color.gray)))
-                    activity3.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                if(activity3.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))
+                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 else {
-                    activity3.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
-                    activity1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity2.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity4.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
+                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 }
             }
         });
@@ -86,12 +87,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(activity4.getImageTintList() == ColorStateList.valueOf(getResources().getColor(R.color.gray)))
-                    activity4.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 else {
                     activity4.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
-                    activity1.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity2.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
-                    activity3.setImageTintList(ColorStateList.valueOf(getResources().getColor(R.color.light_gray)));
+                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
                 }
             }
         });
