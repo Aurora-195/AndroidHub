@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     private class LoginTask extends AsyncTask<String, Void, String> {
         // AsyncTask implementation as previously described
         @Override
-        protected String doInBackground(String... params) {
+        protected String doInBackground(String...    params) {
             String urlString = params[0]; // URL to call
             String resultToDisplay = "";
             InputStream in = null;

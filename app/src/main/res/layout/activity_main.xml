@@ -100,48 +100,59 @@
                 android:layout_width="340dp"
                 android:layout_height="340dp">
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/activity1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="15dp"
+                    android:background="#00000000"
+                    android:contentDescription="NULL"
 
                     app:layout_constraintBottom_toTopOf="@+id/space"
                     app:layout_constraintEnd_toStartOf="@+id/space"
                     app:srcCompat="@drawable/ic_activity_studying"
-                    app:tint="@color/gray" />
+                    app:tint="@color/light_gray" />
 
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/activity2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="15dp"
+                    android:background="#00000000"
+                    android:contentDescription="NULL"
+
                     app:layout_constraintBottom_toTopOf="@+id/space"
                     app:layout_constraintStart_toEndOf="@+id/space"
                     app:srcCompat="@drawable/ic_activity_procrastination"
-                    app:tint="@color/gray" />
-                <ImageView
+                    app:tint="@color/light_gray" />
+
+                <ImageButton
                     android:id="@+id/activity3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="15dp"
+                    android:background="#00000000"
+                    android:contentDescription="NULL"
 
                     app:layout_constraintTop_toBottomOf="@+id/space"
                     app:layout_constraintEnd_toStartOf="@+id/space"
                     app:srcCompat="@drawable/ic_activity_commuting"
-                    app:tint="@color/gray" />
+                    app:tint="@color/light_gray" />
 
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/activity4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="15dp"
+                    android:background="#00000000"
+                    android:contentDescription="NULL"
+
                     app:layout_constraintTop_toBottomOf="@+id/space"
                     app:layout_constraintStart_toEndOf="@+id/space"
                     app:srcCompat="@drawable/ic_activity_sport"
-                    app:tint="@color/gray" />
+                    app:tint="@color/light_gray" />
 
                 <Space
                     android:id="@+id/space"
