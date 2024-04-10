@@ -127,53 +127,107 @@ public class MainActivity extends AppCompatActivity {
                         .contains(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))) {
                     Snackbar.make(findViewById(R.id.start_btn), "Please select an activity", Snackbar.LENGTH_SHORT).show();
                 } else {
-                    Animation fade = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade);
-                    switch(activity[0]) {
-                        case 1:
-                            Animation a1move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.center_a1);
-                            activity1.startAnimation(a1move);
-                            activity2.startAnimation(fade);
-                            activity3.startAnimation(fade);
-                            activity4.startAnimation(fade);
-                            activity1.setClickable(false);
-                            activity2.setClickable(false);
-                            activity3.setClickable(false);
-                            activity4.setClickable(false);
-                            break;
-                        case 2:
-                            Animation a2move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.center_a2);
-                            activity2.startAnimation(a2move);
-                            activity1.startAnimation(fade);
-                            activity3.startAnimation(fade);
-                            activity4.startAnimation(fade);
-                            activity1.setClickable(false);
-                            activity2.setClickable(false);
-                            activity3.setClickable(false);
-                            activity4.setClickable(false);
-                            break;
-                        case 3:
-                            Animation a3move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.center_a3);
-                            activity3.startAnimation(a3move);
-                            activity1.startAnimation(fade);
-                            activity2.startAnimation(fade);
-                            activity4.startAnimation(fade);
-                            activity1.setClickable(false);
-                            activity2.setClickable(false);
-                            activity3.setClickable(false);
-                            activity4.setClickable(false);
-                            break;
-                        case 4:
-                            Animation a4move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.center_a4);
-                            activity4.startAnimation(a4move);
-                            activity1.startAnimation(fade);
-                            activity2.startAnimation(fade);
-                            activity3.startAnimation(fade);
-                            activity1.setClickable(false);
-                            activity2.setClickable(false);
-                            activity3.setClickable(false);
-                            activity4.setClickable(false);
-                            break;
-                    }
+                    if(start.getText().toString().equals("Start Activity")) {
+                        start.setText("Stop Activity");
+                        Animation fadeout = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadeout);
+                        switch(activity[0]) {
+                            case 1:
+                                Animation a1move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.down_left);
+                                activity1.startAnimation(a1move);
+                                activity2.startAnimation(fadeout);
+                                activity3.startAnimation(fadeout);
+                                activity4.startAnimation(fadeout);
+                                activity1.setClickable(false);
+                                activity2.setClickable(false);
+                                activity3.setClickable(false);
+                                activity4.setClickable(false);
+                                break;
+                            case 2:
+                                Animation a2move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.down_right);
+                                activity2.startAnimation(a2move);
+                                activity1.startAnimation(fadeout);
+                                activity3.startAnimation(fadeout);
+                                activity4.startAnimation(fadeout);
+                                activity1.setClickable(false);
+                                activity2.setClickable(false);
+                                activity3.setClickable(false);
+                                activity4.setClickable(false);
+                                break;
+                            case 3:
+                                Animation a3move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.up_left);
+                                activity3.startAnimation(a3move);
+                                activity1.startAnimation(fadeout);
+                                activity2.startAnimation(fadeout);
+                                activity4.startAnimation(fadeout);
+                                activity1.setClickable(false);
+                                activity2.setClickable(false);
+                                activity3.setClickable(false);
+                                activity4.setClickable(false);
+                                break;
+                            case 4:
+                                Animation a4move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.up_right);
+                                activity4.startAnimation(a4move);
+                                activity1.startAnimation(fadeout);
+                                activity2.startAnimation(fadeout);
+                                activity3.startAnimation(fadeout);
+                                activity1.setClickable(false);
+                                activity2.setClickable(false);
+                                activity3.setClickable(false);
+                                activity4.setClickable(false);
+                                break;
+                            }
+                        } else if(start.getText().toString().equals("Stop Activity")) {
+                            Animation fadeout = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadeout);
+                            Animation fadein = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadein);
+                            start.setText("Start Activity");
+                            switch(activity[0]) {
+                                case 1:
+                                    Animation a1move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.up_right);
+                                    activity1.startAnimation(a1move);
+                                    activity2.startAnimation(fadein);
+                                    activity3.startAnimation(fadein);
+                                    activity4.startAnimation(fadein);
+                                    activity1.setClickable(true);
+                                    activity2.setClickable(true);
+                                    activity3.setClickable(true);
+                                    activity4.setClickable(true);
+                                    break;
+                                case 2:
+                                    Animation a2move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.up_left);
+                                    activity2.startAnimation(a2move);
+                                    activity1.startAnimation(fadein);
+                                    activity3.startAnimation(fadein);
+                                    activity4.startAnimation(fadein);
+                                    activity1.setClickable(true);
+                                    activity2.setClickable(true);
+                                    activity3.setClickable(true);
+                                    activity4.setClickable(true);
+                                    break;
+                                case 3:
+                                    Animation a3move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.down_right);
+                                    activity3.startAnimation(a3move);
+                                    activity1.startAnimation(fadein);
+                                    activity2.startAnimation(fadein);
+                                    activity4.startAnimation(fadein);
+                                    activity1.setClickable(true);
+                                    activity2.setClickable(true);
+                                    activity3.setClickable(true);
+                                    activity4.setClickable(true);
+                                    break;
+                                case 4:
+                                    Animation a4move = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.down_left);
+                                    activity4.startAnimation(a4move);
+                                    activity1.startAnimation(fadein);
+                                    activity2.startAnimation(fadein);
+                                    activity3.startAnimation(fadein);
+                                    activity1.setClickable(true);
+                                    activity2.setClickable(true);
+                                    activity3.setClickable(true);
+                                    activity4.setClickable(true);
+                                    break;
+                            }
+                        }
+
                     }
                 }
         });
