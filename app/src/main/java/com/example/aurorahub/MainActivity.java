@@ -5,10 +5,8 @@ import androidx.core.content.ContextCompat;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.drm.DrmStore;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,6 +17,11 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,20 +45,53 @@ public class MainActivity extends AppCompatActivity {
         ImageButton activity3 = findViewById(R.id.activity3);
         ImageButton activity4 = findViewById(R.id.activity4);
         final int[] activity = {0};
+        ArrayList<ImageButton> actArray = new ArrayList<ImageButton>();
+        actArray.add(activity1);
+        actArray.add(activity2);
+        actArray.add(activity3);
+        actArray.add(activity4);
+        class actButton {
+            private int number;
+            actButton(int num) {
+                number = num;
+            }
+
+            public void click() {
+                ImageButton act = actArray.remove(number);
+                if (act.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray))) {
+                    act.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.light_gray)));
+                    actArray.add(number, act);
+                } else {
+                    act.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.gray)));
+                    for(ImageButton i : actArray) {
+                        i.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
+                    }
+                    actArray.add(number, act);
+                }
+                activity[0] = number + 1;
+            }
+            public void start() {
+
+            }
+
+            public void stop() {
+
+            }
+        }
+        try {
+            String[] names = actNames(activities);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
+        TextView test = findViewById(R.id.textView4);
+        test.setText(activities);
 
         activity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Lights up the corresponding activity icon while dimming the others
-                if (activity1.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray))) {
-                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.light_gray)));
-                } else {
-                        activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
-                        activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                        activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                        activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                        activity[0] = 1;
-                }
+                actButton a1 = new actButton(0);
+                a1.click();
             }
         });
 
@@ -63,15 +99,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Lights up the corresponding activity icon while dimming the others
-                if(activity2.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray))) {
-                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.light_gray)));
-                } else {
-                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
-                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity[0] = 2;
-                }
+                actButton a2 = new actButton(1);
+                a2.click();
             }
         });
 
@@ -79,15 +108,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Lights up the corresponding activity icon while dimming the others
-                if(activity3.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray))) {
-                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.light_gray)));
-                } else {
-                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
-                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity[0] = 3;
-                }
+                actButton a3 = new actButton(2);
+                a3.click();
             }
         });
 
@@ -95,17 +117,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Lights up the corresponding activity icon while dimming the others
-                if (activity4.getImageTintList() == ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray))) {
-                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.light_gray)));
-            } else {
-                    activity4.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)));
-                    activity1.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity2.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity3.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(),R.color.light_gray)));
-                    activity[0] = 4;
-                }
+                actButton a4 = new actButton(3);
+                a4.click();
             }
         });
+
+
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -278,6 +295,57 @@ public class MainActivity extends AppCompatActivity {
         TextView message = findViewById(R.id.id_message);
         message.setText(userId);
         // Use the retrieved data (e.g., display it or use it in API calls)
+
+
     }
+
+    private String[] actNames(String json) throws JSONException {
+        JSONArray array = new JSONArray(json);
+        String[] activities = new String[array.length()];
+        for(int i = 0; i < array.length(); i++) {
+            JSONObject object = array.getJSONObject(i);
+            activities[i] = object.getString("name");
+        }
+
+        return activities;
+    }
+
+    public void startActivity(String username, String password, String activity) {
+
+    }
+
+    /*private class addActivityTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            String urlString = params[0];
+            String resultToDisplay = "";
+            InputStream in = null;
+            HttpURLConnection urlConnection = null;
+
+            try {
+                URL url = new URL(urlString);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("POST");
+                urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                urlConnection.setRequestProperty("Accept", "application/json");
+                urlConnection.setDoOutput(true);
+                urlConnection.setDoInput(true);
+
+                JSONObject jsonParam = new JSONObject();
+
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("addActivityTask", "HTTP request error " + e.getMessage(), e);
+                resultToDisplay += "Error during HTTP request: " + e.getMessage();
+            } finally {
+                if(urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+            }
+        }
+    }*/
 
 }
