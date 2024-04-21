@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.aurorahub'
+    namespace 'com.auroratime.aurorahub'
     compileSdk 34
 
     defaultConfig {
