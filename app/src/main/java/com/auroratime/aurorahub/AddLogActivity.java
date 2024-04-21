@@ -276,14 +276,39 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
         return sharedPreferences.getBoolean("loggedIn", false);
     }
     private void handleIntent() {
-        Intent intent = getIntent();
-        if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())) {
-            String activityName = intent.getStringExtra("activityName");
-            String duration = intent.getStringExtra("duration");
 
-            // Now use these values to update your UI or backend
-            Log.d("MainActivity", "Activity Name: " + activityName + ", Duration: " + duration);
+        //
+        //TEST INTENT
+        Intent intent = getIntent();
+        Uri data = intent.getData();  // This gets the Uri set above
+
+        // Now, extract query parameters from the Uri
+        if (data != null) {
+            String activityName = data.getQueryParameter("activityName");
+            String duration = data.getQueryParameter("duration");
+
+            // Use these values to update your UI or backend
+            Log.d("AddLogActivity", "Activity Name: " + activityName + ", Duration: " + duration);
+            System.out.println("AddLogActivity: Activity Name: " + activityName + ", Duration: " + duration);
+        } else {
+            Log.d("AddLogActivity", "No data in intent");
+            System.out.println("AddLogActivity: No data in intent");
         }
 
+        //TEST INTENT
+
+        /*
+        Intent intent = getIntent();
+
+        String activityName = intent.getStringExtra("activityName");
+        String duration = intent.getStringExtra("duration");
+
+        // Now use these values to update your UI or backend
+        Log.d("MainActivity", "Activity Name: " + activityName + ", Duration: " + duration);
+        System.out.println("MainActivity:"+ "Activity Name: " + activityName + ", Duration: " + duration);
+        if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())) {
+
+        }
+        */
     }
 }
