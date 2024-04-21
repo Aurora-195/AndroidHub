@@ -2,7 +2,10 @@ package com.example.aurorahub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -22,18 +25,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Get the data passed from MainActivity
-        String userId = getIntent().getStringExtra("userId");
-        String userLogin = getIntent().getStringExtra("userLogin");
-        String activities = getIntent().getStringExtra("activities");
+        SharedPreferences sharedPreferences = getApplicationContext()
+                .getSharedPreferences("AuroraData", Context.MODE_PRIVATE);
+
+        String userId = sharedPreferences.getString("userId", "none");
+        String userLogin = sharedPreferences.getString("userLogin", "none");
+        String activities = sharedPreferences.getString("userActivities", "none");
+
+        Button addLog = findViewById(R.id.add_log_btn);
         Button settings = findViewById(R.id.settings_btn);
         Button signOut = findViewById(R.id.sign_out_btn);
 
+        addLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), AddLogActivity.class);
+                startActivity(intent);
+            }
+        });
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Navigate to another activity and pass user data
+
                 Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
-                intent.putExtra("userId", userId);
                 startActivity(intent);
             }
         });
@@ -41,6 +57,12 @@ public class MainActivity extends AppCompatActivity {
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //clear saved user data
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+
+                //open login menu
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -48,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView message = findViewById(R.id.id_message);
         message.setText(userId);
-        // Use the retrieved data (e.g., display it or use it in API calls)
     }
 
 }

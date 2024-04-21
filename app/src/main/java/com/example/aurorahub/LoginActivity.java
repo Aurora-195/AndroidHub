@@ -2,7 +2,9 @@ package com.example.aurorahub;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +40,10 @@ public class LoginActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_login);
 
+        if(isLoggedIn(getApplicationContext())){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
 
         EditText usernameInput = findViewById(R.id.username_input);
         EditText passwordInput = findViewById(R.id.password_input);
@@ -131,10 +137,8 @@ public class LoginActivity extends AppCompatActivity {
                     String activities = user.getJSONArray("activities").toString();
 
                     // Navigate to another activity and pass user data
+                    saveUserData(getApplicationContext(), userId, userLogin, activities);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("userId", userId);
-                    intent.putExtra("userLogin", userLogin);
-                    intent.putExtra("activities", activities);
                     startActivity(intent);
                 } else {
                     // Show error message
@@ -151,5 +155,24 @@ public class LoginActivity extends AppCompatActivity {
             return "username=" + URLEncoder.encode(username, "UTF-8") +
                     "&password=" + URLEncoder.encode(password, "UTF-8");
         }
+    }
+
+    // This function stores the data of the logged user to avoid logging in later and share the data
+    // with other features
+    private void saveUserData(Context context, String userId, String userLogin, String activities){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AuroraData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("userId", userId);
+        editor.putString("userLogin", userLogin);
+        editor.putString("userActivities", activities);
+        editor.putBoolean("loggedIn", true);
+
+        editor.apply();
+    }
+
+    public boolean isLoggedIn(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AuroraData", Context.MODE_PRIVATE);
+        return sharedPreferences.getBoolean("loggedIn", false);
     }
 }
