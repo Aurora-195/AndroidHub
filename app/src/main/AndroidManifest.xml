@@ -19,14 +19,18 @@
             android:resource="@xml/shortcuts" />
         <activity
             android:name=".SettingsActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AuroraHub.NoActionBar"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".AddLogActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AuroraHub.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -36,14 +40,16 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AuroraHub.NoActionBar" >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AuroraHub.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
