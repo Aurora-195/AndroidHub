@@ -24,4 +24,14 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="click_to_select_start_time">Click to select Start Time</string>
+    <string name="click_to_select_finish_time">Click to select Finish Time</string>
+
+    <string-array name="log_activity_patterns">
+        <item>log {$activityName} to Aurora for {$duration}</item>
+        <item>record {$activityName} to Aurora for {$duration}</item>
+        <!-- Add more patterns as needed -->
+    </string-array>
 </resources>

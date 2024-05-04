@@ -3,16 +3,16 @@ plugins {
 }
 
 android {
-    namespace 'com.example.aurorahub'
+    namespace 'com.auroratime.aurorahub'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.aurorahub"
+        applicationId "com.auroratime.aurorahub"
         minSdk 28
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -42,4 +42,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+
 }
