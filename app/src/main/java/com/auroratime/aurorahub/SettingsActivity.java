@@ -18,8 +18,12 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         setContentView(R.layout.activity_settings);
-    }
 
+    }
+    public void backToMainMenu(View view){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+    }
     public void startLinkingProcess(View view) {
         // The URL to start the OAuth flow, pointing to your backend or directly to Google's OAuth server
         String authUrl = "https://auroratime.org/auth/google";

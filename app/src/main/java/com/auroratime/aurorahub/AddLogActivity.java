@@ -52,7 +52,7 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
     private Spinner spinnerActivities;
 
     private TextView tvDuration, tvStartTime, tvEndTime;
-    private Button btSubmit;
+    private Button btSubmit, btBack;
 
     private String userId;
 
@@ -78,7 +78,7 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
         tvStartTime = findViewById(R.id.tvStartTime);
         tvEndTime = findViewById(R.id.tvEndTime);
         btSubmit = findViewById(R.id.submitButton);
-
+        btBack = findViewById(R.id.cancelButton);
         tvStartTime.setOnTouchListener(this);
         tvEndTime.setOnTouchListener(this);
 
@@ -89,6 +89,13 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
             @Override
             public void onClick(View v) {
                 new PostLogTask((String)tvStartTime.getText(), (String)tvEndTime.getText()).execute();
+            }
+        });
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -250,6 +257,7 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
                             sb.append(line).append('\n');
                         }
                         resultToDisplay = sb.toString();
+
                     }
                 } else {
                     resultToDisplay = "Error " + responseCode;
@@ -268,6 +276,9 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
         @Override
         protected void onPostExecute(String result) {
             Log.d("PostLogTask", "Response received: " + result);
+            Toast.makeText(AddLogActivity.this, "Activity Recorded Successfully!", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -278,11 +289,10 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
     private void handleIntent() {
 
         //
-        //TEST INTENT
         Intent intent = getIntent();
         Uri data = intent.getData();  // This gets the Uri set above
 
-        // Now, extract query parameters from the Uri
+        //extract query parameters from the Uri
         if (data != null) {
             String activityName = data.getQueryParameter("activityName");
             String duration = data.getQueryParameter("duration");
@@ -294,21 +304,5 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
             Log.d("AddLogActivity", "No data in intent");
             System.out.println("AddLogActivity: No data in intent");
         }
-
-        //TEST INTENT
-
-        /*
-        Intent intent = getIntent();
-
-        String activityName = intent.getStringExtra("activityName");
-        String duration = intent.getStringExtra("duration");
-
-        // Now use these values to update your UI or backend
-        Log.d("MainActivity", "Activity Name: " + activityName + ", Duration: " + duration);
-        System.out.println("MainActivity:"+ "Activity Name: " + activityName + ", Duration: " + duration);
-        if (intent != null && Intent.ACTION_VIEW.equals(intent.getAction())) {
-
-        }
-        */
     }
 }

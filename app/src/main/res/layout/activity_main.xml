@@ -38,43 +38,26 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:text="TextView"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/sign_out_btn" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:text="Procrastination"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toStartOf="@+id/sign_out_btn"
+        app:layout_constraintStart_toStartOf="@+id/id_message"
+        app:layout_constraintTop_toBottomOf="@+id/sign_out_btn" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:gravity=""
-        android:text="Selected Activity:"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="Current Activity:"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="32dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -128,7 +111,7 @@
                     app:srcCompat="@drawable/ic_activity_procrastination"
                     app:tint="@color/gray" />
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/activity3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
@@ -138,7 +121,7 @@
 
                     app:layout_constraintEnd_toStartOf="@+id/space"
                     app:layout_constraintTop_toBottomOf="@+id/space"
-                    app:srcCompat="@drawable/ic_activity_commuting"
+                    app:srcCompat="@drawable/ic_activity_sport"
                     app:tint="@color/light_gray" />
 
 
@@ -150,10 +133,9 @@
                     android:background="#00000000"
                     android:contentDescription="NULL"
 
-                    app:layout_constraintTop_toBottomOf="@+id/space"
                     app:layout_constraintStart_toEndOf="@+id/space"
                     app:layout_constraintTop_toBottomOf="@+id/space"
-                    app:srcCompat="@drawable/ic_activity_sport"
+                    app:srcCompat="@drawable/ic_activity_meditation"
                     app:tint="@color/light_gray" />
 
                 <Space
@@ -174,7 +156,7 @@
             android:id="@+id/start_btn"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="36dp"
             android:background="@drawable/gradient_background"
             android:text="Start Activity"
             android:textAllCaps="false"
@@ -187,7 +169,7 @@
             android:id="@+id/add_log_btn"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="14dp"
             android:background="@drawable/white_background"
             android:text="Add a Record"
             android:textAllCaps="false"
@@ -201,7 +183,7 @@
             android:id="@+id/charts_btn"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="14dp"
             android:background="@drawable/white_background"
             android:text="See Charts"
             android:textAllCaps="false"
@@ -214,7 +196,7 @@
             android:id="@+id/settings_btn"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="14dp"
             android:background="@drawable/white_background"
             android:text="Settings"
             android:textAllCaps="false"
@@ -225,8 +207,4 @@
             app:cornerRadius="25dp" />
 
     </LinearLayout>
-
-    <!-- drawable/ellipse_11.xml -->
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
