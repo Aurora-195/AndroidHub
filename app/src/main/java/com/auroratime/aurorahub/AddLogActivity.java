@@ -230,21 +230,20 @@ public class AddLogActivity extends AppCompatActivity implements View.OnTouchLis
                 urlConnection.setDoOutput(true);
                 urlConnection.setDoInput(true);
 
-                JSONObject newLog = new JSONObject();
-                newLog.put("startTime", TimeConverter.convertToISO8601UTC(startTime));
-                newLog.put("endTime", TimeConverter.convertToISO8601UTC(endTime));
-                newLog.put("status", "completed");
-
                 JSONObject activityInstance = new JSONObject();
-                activityInstance.put("newLog", newLog);
+                activityInstance.put("startTime", TimeConverter.convertToISO8601UTC(startTime));
+                activityInstance.put("endTime", TimeConverter.convertToISO8601UTC(endTime));
+                activityInstance.put("status", "completed");
+
+// Add the activityInstance to the payload
                 payload.put("activityInstance", activityInstance);
                 payload.put("name", spinnerActivities.getSelectedItem().toString());
 
-
+// Write to the output stream
                 OutputStreamWriter writer = new OutputStreamWriter(urlConnection.getOutputStream());
                 writer.write(payload.toString());
                 System.out.println(payload.toString());
-                System.out.println("UserID: "+ userId);
+                System.out.println("UserID: " + userId);
                 writer.flush();
                 writer.close();
 
