@@ -11,7 +11,10 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -34,7 +37,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        // Hide the status bar and bottom navigation bar
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            getWindow().getDecorView().getWindowInsetsController().hide(
+                    android.view.WindowInsets.Type.statusBars() | android.view.WindowInsets.Type.navigationBars());
+        } else {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        }
         setContentView(R.layout.activity_main);
 
         // Get the data passed from MainActivity
@@ -171,8 +181,20 @@ public class MainActivity extends AppCompatActivity {
                         .contains(ColorStateList.valueOf(ContextCompat.getColor(getApplicationContext(), R.color.gray)))) {
                     Snackbar.make(findViewById(R.id.start_btn), "Please select an activity", Snackbar.LENGTH_SHORT).show();
                 } else {
+                    String activityName = "";
+                    try {
+                        String[] names = actNames(activities);
+                        activityName = names[activity[0] - 1];
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                     if(start.getText().toString().equals("Start Activity")) {
                         start.setText("Stop Activity");
+
+                        new ActivityTask("start", activityName, userId).execute();
+
+                        // Existing code for starting the activity
                         Animation fadeout = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadeout);
                         ObjectAnimator right = ObjectAnimator.ofFloat(activity1, "translationX", 220f);
                         ObjectAnimator left = ObjectAnimator.ofFloat(activity1, "translationX", -220f);
@@ -242,6 +264,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } else if(start.getText().toString().equals("Stop Activity")) {
                         start.setText("Start Activity");
+
+                        new ActivityTask("stop", activityName, userId).execute();
+
+                        // Existing code for stopping the activity
                         Animation fadeout = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadeout);
                         Animation fadein = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fadein);
                         ObjectAnimator right = ObjectAnimator.ofFloat(activity1, "translationX", 5f);
@@ -315,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         TextView message = findViewById(R.id.id_message);
         message.setText(userId);
     }
@@ -334,38 +361,38 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*private class addActivityTask extends AsyncTask<String, Void, String> {
+    public class ActivityTask extends AsyncTask<String, Void, String> {
+
+        private String operationType; // "start" or "stop"
+        private String activityName;
+        private String userId;
+
+        public ActivityTask(String operationType, String activityName, String userId) {
+            this.operationType = operationType;
+            this.activityName = activityName;
+            this.userId = userId;
+        }
 
         @Override
         protected String doInBackground(String... params) {
-            String urlString = params[0];
-            String resultToDisplay = "";
-            InputStream in = null;
-            HttpURLConnection urlConnection = null;
+            String baseUrl = "https://auroratime.org/users/" + userId + "/";
+            String endpoint = operationType.equals("start") ? "start-activity" : "end-activity";
+            String urlString = baseUrl + endpoint;
 
             try {
-                URL url = new URL(urlString);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                urlConnection.setRequestProperty("Accept", "application/json");
-                urlConnection.setDoOutput(true);
-                urlConnection.setDoInput(true);
+                JSONObject json = new JSONObject();
+                json.put("activityName", activityName);
 
-                JSONObject jsonParam = new JSONObject();
-
-
-
+                return NetworkUtils.post(urlString, json.toString());
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.e("addActivityTask", "HTTP request error " + e.getMessage(), e);
-                resultToDisplay += "Error during HTTP request: " + e.getMessage();
-            } finally {
-                if(urlConnection != null) {
-                    urlConnection.disconnect();
-                }
+                return null;
             }
         }
-    }*/
 
+        @Override
+        protected void onPostExecute(String result) {
+            // Handle the result of the network operation if needed
+        }
+    }
 }
